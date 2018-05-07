@@ -14,7 +14,7 @@ var http = require('http');
 //var privateKey  = fs.readFileSync('/etc/letsencrypt/live/socket.vicoders.com/privkey.pem', 'utf8');
 //var certificate = fs.readFileSync('/etc/letsencrypt/live/socket.vicoders.com/fullchain.pem', 'utf8');
 
-var credentials = {key: privateKey, cert: certificate};
+//var credentials = {key: privateKey, cert: certificate};
 /**
  * Get port from environment and store in Express.
  */
