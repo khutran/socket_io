@@ -9,12 +9,14 @@ var fs = require('fs');
 var app = require('../app');
 var debug = require('debug')('socket-service:server');
 var http = require('http');
-//var https = require('https');
+var https = require('https');
 
-//var privateKey  = fs.readFileSync('/etc/letsencrypt/live/socket.vicoders.com/privkey.pem', 'utf8');
-//var certificate = fs.readFileSync('/etc/letsencrypt/live/socket.vicoders.com/fullchain.pem', 'utf8');
+var ssl = {
+    key: fs.readFileSync('/etc/letsencrypt/live/socket.vicoders.com/privkey.pem'),
+    cert: fs.readFileSync('/etc/letsencrypt/live/socket.vicoders.com/fullchain.pem'),
+    ca: fs.readFileSync('/etc/letsencrypt/live/socket.vicoders.com/chain.pem')
+}
 
-//var credentials = {key: privateKey, cert: certificate};
 /**
  * Get port from environment and store in Express.
  */
@@ -42,6 +44,7 @@ server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 
+https.createServer(ssl, app).listen(process.env.PORT || 8443);
 /**
  * Normalize a port into a number, string, or false.
  */
