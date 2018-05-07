@@ -9,10 +9,10 @@ var fs = require('fs');
 var app = require('../app');
 var debug = require('debug')('socket-service:server');
 var http = require('http');
-var https = require('https');
+//var https = require('https');
 
-var privateKey  = fs.readFileSync('/etc/letsencrypt/live/socket.vicoders.com/privkey.pem', 'utf8');
-var certificate = fs.readFileSync('/etc/letsencrypt/live/socket.vicoders.com/fullchain.pem', 'utf8');
+//var privateKey  = fs.readFileSync('/etc/letsencrypt/live/socket.vicoders.com/privkey.pem', 'utf8');
+//var certificate = fs.readFileSync('/etc/letsencrypt/live/socket.vicoders.com/fullchain.pem', 'utf8');
 
 var credentials = {key: privateKey, cert: certificate};
 /**
@@ -26,8 +26,8 @@ app.set('port', port);
  * Create HTTP server.
  */
 
-//var server = http.createServer(app);
-var server = https.createServer(credentials, app);
+var server = http.createServer(app);
+//var server = https.createServer(credentials, app);
 
 var io = require('socket.io')(server);
 process._io = io;
