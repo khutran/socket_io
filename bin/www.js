@@ -28,7 +28,7 @@ app.set('port', port);
  * Create HTTP server.
  */
 
-//var server = http.createServer(app);
+var server = http.createServer(app);
 //var server = https.createServer(credentials, app);
 
 var io = require('socket.io')(server);
