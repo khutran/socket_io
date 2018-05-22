@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "devstart": "nodemon ./node_modules/.bin/babel-node ./bin/www",
-    "build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log,error_code.md,README.md,app.test.js --copy-files"
+    "build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log,error_code.md,README.md,app.test.js --copy-files",
+    "start": "MULTI_THREAD=false PORT=3030 ENV=production node ./dist/bin/www"
   },
   "dependencies": {
     "body-parser": "^1.18.2",
@@ -20,6 +21,7 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "rimraf": "^2.6.2",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.2",
     "babel-jest": "^22.4.1",
